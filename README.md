@@ -264,9 +264,9 @@ src/main/java/com/yourname/yourplugin/
 
 **See our documentation for examples:**
 
-- [Getting Started with Plugins](../Documentation/07-getting-started-with-plugins.md)
-- [Advanced Plugin Patterns](../Documentation/12-advanced-plugin-patterns.md)
-- [Common Plugin Features](../Documentation/14-common-plugin-features.md)
+- [Getting Started with Plugins](https://britakee-studios.gitbook.io/hytale-modding-documentation/plugins-java-development/07-getting-started-with-plugins)
+- [Advanced Plugin Patterns](https://britakee-studios.gitbook.io/hytale-modding-documentation/plugins-java-development/12-advanced-plugin-patterns)
+- [Common Plugin Features](https://britakee-studios.gitbook.io/hytale-modding-documentation/plugins-java-development/14-common-plugin-features)
 
 ---
 
