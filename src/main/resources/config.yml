@@ -1,0 +1,34 @@
+# OneHand Blocks Configuration
+# Ce fichier te permet de configurer quels items peuvent être tenus à une main
+
+# Patterns de noms d'items à modifier (sensible à la casse)
+patterns:
+  - "Lantern"
+  - "Torch"
+  - "Candle"
+  - "Light"
+  - "Lamp"
+  - "Wisp"
+
+# Catégories d'items à modifier
+categories:
+  - "Furniture.Lighting"
+  - "Blocks.Light"
+
+# Liste noire - items à exclure même s'ils matchent les patterns
+blacklist:
+# Exemple:
+# - "Furniture_Heavy_Chandelier"
+# - "Blocks_Large_Lantern"
+
+# Options supplémentaires
+options:
+  # Modifier aussi les blocs qui émettent de la lumière (même sans pattern)
+  modify_light_emitting_blocks: true
+
+  # Taille maximale de hitbox pour les blocs lumineux auto-détectés
+  # (Full = bloc complet, Plant_Full = bloc décoratif pleine hauteur)
+  max_hitbox_size: "Plant_Full"
+
+  # Activer les logs de debug
+  debug_logging: false

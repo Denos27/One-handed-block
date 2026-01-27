@@ -1,14 +1,14 @@
 {
-    "Group": "Example",
-    "Name": "ExamplePlugin",
-    "Version": "0.0.2",
-    "Description": "An example plugin for HyTale!",
+    "Group": "OneHandedBlock",
+    "Name": "OneHandedBlock",
+    "Version": "1.0.0",
+    "Description": "",
     "Authors": [
         {
-            "Name": "It's you!"
+            "Name": "Denos"
         }
     ],
-    "Website": "example.org",
+    "Website": "",
     "ServerVersion": "*",
     "Dependencies": {
         
@@ -17,6 +17,6 @@
         
     },
     "DisabledByDefault": false,
-    "Main": "org.example.plugin.ExamplePlugin",
+    "Main": "com.example.templateplugin.OneHandBlocksPlugin",
     "IncludesAssetPack": true
 }
