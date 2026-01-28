@@ -20,7 +20,6 @@ public class OneHandBlocksPlugin extends JavaPlugin {
 
     private static final HytaleLogger LOGGER = HytaleLogger.forEnclosingClass();
 
-    // Configuration
     private final Set<String> BLOCK_CATEGORIES = new HashSet<>(Arrays.asList(
             "Blocks",
             "Blocks.Stone",
@@ -138,7 +137,7 @@ public class OneHandBlocksPlugin extends JavaPlugin {
                 }
             }
 
-            // 2. Modifier les interactions pour enlever Block_Primary et Block_Secondary
+            // 2. Modifier les interactions
             Field interactionsField = findField(item.getClass(), "interactions");
             if (interactionsField != null) {
                 interactionsField.setAccessible(true);
@@ -148,32 +147,29 @@ public class OneHandBlocksPlugin extends JavaPlugin {
                     @SuppressWarnings("unchecked")
                     Map<InteractionType, String> interactions = (Map<InteractionType, String>) interactionsObj;
 
-                    // Créer une nouvelle map modifiable
                     Map<InteractionType, String> newInteractions = new EnumMap<>(InteractionType.class);
                     newInteractions.putAll(interactions);
 
                     boolean interactionChanged = false;
 
-                    // Remplacer Block_Primary par Item_Primary (ou similaire)
+                    // Remplacer par nos interactions custom
                     if (newInteractions.containsKey(InteractionType.Primary)) {
                         String primaryInt = newInteractions.get(InteractionType.Primary);
                         if ("Block_Primary".equals(primaryInt)) {
-                            newInteractions.put(InteractionType.Primary, "Item_Primary");
+                            newInteractions.put(InteractionType.Primary, "Block_Primary_OffhandVisible");
                             interactionChanged = true;
                         }
                     }
 
-                    // Remplacer Block_Secondary par Item_Secondary (ou similaire)
                     if (newInteractions.containsKey(InteractionType.Secondary)) {
                         String secondaryInt = newInteractions.get(InteractionType.Secondary);
                         if ("Block_Secondary".equals(secondaryInt)) {
-                            newInteractions.put(InteractionType.Secondary, "Item_Secondary");
+                            newInteractions.put(InteractionType.Secondary, "Block_Secondary_OffhandVisible");
                             interactionChanged = true;
                         }
                     }
 
                     if (interactionChanged) {
-                        // Rendre la map immuable
                         newInteractions = Collections.unmodifiableMap(newInteractions);
                         interactionsField.set(item, newInteractions);
                         modified = true;
@@ -226,19 +222,16 @@ public class OneHandBlocksPlugin extends JavaPlugin {
         try {
             String itemId = item.getId();
 
-            // Vérifier la blacklist
             for (String pattern : BLACKLIST_PATTERNS) {
                 if (itemId.contains(pattern)) {
                     return false;
                 }
             }
 
-            // Vérifier si c'est un bloc
             if (item.hasBlockType()) {
                 return true;
             }
 
-            // Vérifier par catégorie
             String[] categories = item.getCategories();
             if (categories != null) {
                 for (String category : categories) {
